@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>ALC Project</title>
 </head>
 <body>
-    <div id="container">
-        <div id="mini-nav">
+    <div id="container" class="row">
+        <div id="mini-nav" class="col-10">
             <div class="nav-btns">
                 <button>Add</button>
             </div>
@@ -20,22 +21,24 @@
                 <button>Delete</button>
             </div>
         </div>
-        <div id="add">
-            <form>
-                <label for="fname">First Name</label>
-                <input type="text" id="fname" name="firstname">
-            
-                <label for="lname">Last Name</label>
-                <input type="text" id="lname" name="lastname">
-
-                <label for="email">Email</label>
-                <input type="text" id="email" name="lastname">
-
-                <label for="phone">Phone Number</label>
-                <input type="text" id="phone" name="lastname">
+        <div id="add" class="row">
+            <div class="col-m-8 col-4">
+                <form>
+                    <label for="fname">First Name</label>
+                    <input type="text" id="fname" name="firstname">
                 
-                <input type="submit" value="Add Contact">
-            </form>
+                    <label for="lname">Last Name</label>
+                    <input type="text" id="lname" name="lastname">
+
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="lastname">
+
+                    <label for="phone">Phone Number</label>
+                    <input type="text" id="phone" name="lastname">
+                    
+                    <input type="submit" value="Add Contact">
+                </form>
+            </div>    
         </div>
     </div>
 	<script type="text/javascript" src="js/jquery.js"></script>
