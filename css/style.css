@@ -50,7 +50,7 @@ body{
 }
 #container {
     padding: 20px;
-    margin-top: 100px;
+    margin-top: 50px;
 }
 #mini-nav{
     display: -webkit-flex;
@@ -108,4 +108,9 @@ input[type=submit] {
 
 input[type=submit]:hover {
     background-color: #63699b;
+}
+.error{
+    color: red;
+    margin: 3px;
+    font-size: 14px;
 }
