@@ -1,4 +1,12 @@
 $(function(){
+    var store = [];
+    // contact instance
+    function contact(first, last, email, phone) {
+        this.fname = first;
+        this.lname = last;
+        this.email = email;
+        this.phone = phone;
+    }
     // validate individual inputs
     $('input').blur(function(){
         if($(this).val() == ""){
@@ -22,16 +30,22 @@ $(function(){
 
     // submit inputs
     function submitInputs(){
-        alert('submitted');
-        clearInputs();
+        saveInputs();
+        $('#success').html('Successfully Added'); 
+        setTimeout(function(){
+            clearAll();
+        }, 1000);
+        
     }
 
-    // clear inputs
-    function clearInputs(){
+    // reset all
+    function clearAll(){
         $('#fname').val('');
         $('#lname').val('');
         $('#email').val('');
         $('#phone').val('');
+        $('#success').html('');
+
     }
     
     // on submit
@@ -39,5 +53,16 @@ $(function(){
         event.preventDefault();
         validateForm();
     });
+
+    // insertion
+    function saveInputs(){
+        var fname = $('#fname').val();
+        var lname = $('#lname').val();
+        var email = $('#email').val();
+        var phone = $('#phone').val();
+
+        var instance = new contact(fname, lname, email, phone);
+        store.push(instance);
+    }
 
 });
