@@ -31,3 +31,31 @@ body{
 .nav-btns button:active{
     background-color:#63699b;
 }
+#add{
+    width: 30%;
+    margin: 40px auto;
+}
+input[type=text]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    background-color: transparent;
+    border: 2px solid #8e93bd;
+    border-radius: 5px;
+    color: white;
+    box-sizing: border-box;
+}
+input[type=submit] {
+    width: 30%;
+    background-color: transparent;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: 2px solid #8e93bd;;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #63699b;
+}
