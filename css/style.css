@@ -1,0 +1,33 @@
+body{
+    background: url(../img/background.jpg) no-repeat center center fixed;
+    background-size: cover;
+    box-sizing: border-box;
+    color: white;
+}
+#container {
+    padding: 20px;
+    margin-top: 100px;
+}
+#mini-nav{
+    display: -webkit-flex;
+    border-bottom: 2px solid #8e93bd;
+    width: 70%;
+    margin: auto;
+    padding: 10px;
+    justify-content: space-around;
+}
+.nav-btns button{
+    padding: 10px;
+    width: 80px;
+    border-radius: 5px;
+    color: white;
+    background-color: transparent;
+    border: 2px solid #8e93bd;
+}
+.nav-btns button:hover{
+    background-color: #8e93bd;
+    cursor: pointer;
+}
+.nav-btns button:active{
+    background-color:#63699b;
+}
