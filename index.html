@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>ALC Project</title>
 </head>
@@ -9,46 +9,57 @@
     <div id="container" class="row">
         <div id="mini-nav" class="col-10">
             <div class="nav-btns">
-                <button>Add</button>
+                <button id="addBtn">Add</button>
             </div>
             <div class="nav-btns">
-                <button>View</button>                
+                <button id="viewBtn">View</button>                
             </div>
             <div class="nav-btns">
-                <button>Edit</button>
+                <button id="editBtn">Edit</button>
             </div>
             <div class="nav-btns">
-                <button>Delete</button>
+                <button id="deleteBtn">Delete</button>
             </div>
         </div>
-        <div id="add" class="row">
-            <div class="col-m-8 col-4">
-                <form>
-                    <p id="success"></p>
-                    <label for="fname">First Name</label>
-                    <input type="text" id="fname" value="">
-                    <p class="error"></p>
-                
-                    <label for="lname">Last Name</label>
-                    <input type="text" id="lname" value="">
-                    <p class="error"></p>
-
-                    <label for="email">Email</label>
-                    <input type="text" id="email" value="">
-                    <p class="error"></p>
-
-                    <label for="phone">Phone Number</label>
-                    <input type="text" id="phone" value="">
-                    <p class="error"></p>
+        <div>
+            <div id="add" class="row" >
+                <div class="col-m-8 col-4">
+                    <form>
+                        <p id="success"></p>
+                        <label for="fname">First Name</label>
+                        <input type="text" id="fname" value="">
+                        <p class="error"></p>
                     
-                    <input id="addcontact" type="submit" value="Add Contact">
-                    <p class="error"></p>
-                    
-                </form>
-            </div>    
+                        <label for="lname">Last Name</label>
+                        <input type="text" id="lname" value="">
+                        <p class="error"></p>
+    
+                        <label for="email">Email</label>
+                        <input type="text" id="email" value="">
+                        <p class="error"></p>
+    
+                        <label for="phone">Phone Number</label>
+                        <input type="text" id="phone" value="">
+                        <p class="error"></p>
+                        
+                        <input id="addcontact" type="submit" value="Add Contact">
+                        <p class="error"></p>
+                        
+                    </form>
+                </div>    
+            </div>
+            <div id="view" class="row">
+            </div>
         </div>
+        
     </div>
 	<script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
+    <script>
+        // had to bring the function here because going back and forth the dom and script was't working
+        function toggleMore(el){
+           el.next().toggleClass('hidemore');
+        }
+    </script>
 </body>
 </html>

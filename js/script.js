@@ -65,4 +65,28 @@ $(function(){
         store.push(instance);
     }
 
+    // view contacts
+    function viewContacts(){
+        $('#view').html('');
+        for(i=0; i<store.length; i++){
+            var name = store[i].fname +' '+store[i].lname;
+            var email = store[i].email;
+            var phone = store[i].phone;
+            $('#view').html($('#view').html() + '<div class="col-m-8 col-4 contact"><p class="name" onclick="toggleMore($(this))">'+ name +'</p><div class="more hidemore"><p>'+ email +'</p><p>'+ phone +'</p></div></div>');
+        }
+    }
+
+    // by default only add div should display
+    $('#add').siblings().hide();
+
+    // navigating functions
+    $('#addBtn').click(function(){
+        $('#add').show();
+        $('#add').siblings().hide();
+    });
+    $('#viewBtn').click(function(){
+        $('#view').show();
+        $('#view').siblings().hide();
+        viewContacts();
+    });
 });

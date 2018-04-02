@@ -118,3 +118,24 @@ input[type=submit]:hover {
     font-size: 16px;
     color: #8e93bd
 }
+
+/* view contact */
+.contact{
+    margin: auto;
+    float: none;
+    text-align: center;
+    border-bottom: 2px solid #8e93bd;
+    padding: 5px;
+}
+.contact .name{
+    cursor: pointer;
+}
+.contact .name:hover{
+    color: #8e93bd;
+}
+.hidemore{
+    display: none;
+}
+.more p{
+    color: rgb(11, 252, 11);
+}
