@@ -7,6 +7,7 @@
 </head>
 <body>
     <div id="container" class="row">
+        <!-- navigation -->
         <div id="mini-nav" class="col-10">
             <div class="nav-btns">
                 <button id="addBtn">Add</button>
@@ -21,7 +22,10 @@
                 <button id="deleteBtn">Delete</button>
             </div>
         </div>
+
+        <!-- pages -->
         <div>
+            <!-- add page -->
             <div id="add" class="row" >
                 <div class="col-m-8 col-4">
                     <form>
@@ -48,9 +52,17 @@
                     </form>
                 </div>    
             </div>
+
+            <!-- view page -->
             <div id="view" class="row">
             </div>
+
+            <!-- edit page -->
             <div id="edit" class="row">
+            </div>
+
+            <!-- delete page -->
+            <div id="delete" class="row">
             </div>
         </div>
         
@@ -166,6 +178,22 @@
         }
     }
 
+    // delete contacts
+    function  deleteContacts(){
+        $('#delete').html('');
+        for(i=0; i<store.length; i++){
+            var name = store[i].fname +' '+store[i].lname;
+            var email = store[i].email;
+            var phone = store[i].phone;
+            $('#delete').html($('#delete').html() + '\
+            <div class="col-m-8 col-4 contact">\
+                <p class="name">'+ name +'</p>\
+                <span onClick="deleteContact($(this))">Delete</span>\
+                <input type="hidden" value="'+ i +'">\
+            </div>');
+        }
+    }
+
     // by default only add div should display
     $('#add').siblings().hide();
 
@@ -183,6 +211,11 @@
         $('#edit').show();
         $('#edit').siblings().hide();
         editContacts();
+    });
+    $('#deleteBtn').click(function(){
+        $('#delete').show();
+        $('#delete').siblings().hide();
+        deleteContacts();
     });
 
     // toggling more details
@@ -210,6 +243,13 @@
         store[id].phone = phone;
         // refresh page
         editContacts();
+    }
+
+    // delete contact
+    function deleteContact(el){
+        var id = el.next().val();
+        store.splice(id, 1);
+        deleteContacts();
     }
     </script>
 </body>

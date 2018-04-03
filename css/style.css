@@ -130,7 +130,7 @@ input[type=submit]:hover {
 #view .name, #edit .name{
     cursor: pointer;
 }
-#view .name:hover, #edit span:hover{
+#view .name:hover, #edit span:hover, #delete span:hover{
     color: #8e93bd;
 }
 .hidemore{
@@ -141,10 +141,10 @@ input[type=submit]:hover {
 }
 
 /* edit contact */
-#edit .name{
+#edit .name, #delete .name{
     display: inline-block;
     margin-right: 100px;
 }
-#edit span{
+#edit span, #delete span{
     cursor: pointer;
 }
