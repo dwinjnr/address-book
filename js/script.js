@@ -75,7 +75,28 @@ $(function(){
             $('#view').html($('#view').html() + '<div class="col-m-8 col-4 contact"><p class="name" onclick="toggleMore($(this))">'+ name +'</p><div class="more hidemore"><p>'+ email +'</p><p>'+ phone +'</p></div></div>');
         }
     }
-
+    function editContacts(){
+        $('#edit').html('');
+        for(i=0; i<store.length; i++){
+            var fname = store[i].fname;
+            var lname = store[i].lname;
+            var email = store[i].email;
+            var phone = store[i].phone;
+            var name = fname + ' ' + lname;
+            $('#edit').html($('#edit').html() + '\
+            <div class="col-m-8 col-4 contact">\
+                <p class="name">'+ name +'</p>\
+                <span onClick="toggleMore($(this))">Edit</span>\
+                <div class="more hidemore">\
+                    <input type="text" value="'+ fname +'">\
+                    <input type="text" value="'+ lname +'">\
+                    <input type="text" value="'+ email +'">\
+                    <input type="text" value="'+ phone +'">\
+                    <input onClick="editContact()" type="submit" value="Edit Contact">\
+                </div>\
+            </div>');
+        }
+    }
     // by default only add div should display
     $('#add').siblings().hide();
 
@@ -88,5 +109,10 @@ $(function(){
         $('#view').show();
         $('#view').siblings().hide();
         viewContacts();
+    });
+    $('#editBtn').click(function(){
+        $('#edit').show();
+        $('#edit').siblings().hide();
+        editContacts();
     });
 });

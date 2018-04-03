@@ -50,16 +50,168 @@
             </div>
             <div id="view" class="row">
             </div>
+            <div id="edit" class="row">
+            </div>
         </div>
         
     </div>
 	<script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
+    <!-- <script type="text/javascript" src="js/script.js"></script> -->
     <script>
-        // had to bring the function here because going back and forth the dom and script was't working
-        function toggleMore(el){
-           el.next().toggleClass('hidemore');
+        var store = [];
+    // contact instance
+    function contact(first, last, email, phone) {
+        this.fname = first;
+        this.lname = last;
+        this.email = email;
+        this.phone = phone;
+    }
+    // validate individual inputs
+    $('input').blur(function(){
+        if($(this).val() == ""){
+        $(this).next().html('Field cannot be empty');
+        $(this).focus();
         }
+    });
+    $('input').keydown(function(){
+        $(this).next().html('');
+        $('#addcontact').next().html('');                    
+    });
+
+    // validate entire form 
+    function validateForm() {
+        if ($('#fname').val() == "" || $('#lname').val() == "" || $('#email').val() == "" ||$('#phone').val() == "") {
+            $('#addcontact').next().html('No field can be empty');
+        }else{
+           submitInputs();
+        }
+    }
+
+    // submit inputs
+    function submitInputs(){
+        saveInputs();
+        $('#success').html('Successfully Added'); 
+        setTimeout(function(){
+            clearAll();
+        }, 1000);
+        
+    }
+
+    // reset all
+    function clearAll(){
+        $('#fname').val('');
+        $('#lname').val('');
+        $('#email').val('');
+        $('#phone').val('');
+        $('#success').html('');
+
+    }
+    
+    // on submit
+    $('#addcontact').click(function(event){
+        event.preventDefault();
+        validateForm();
+    });
+
+    // insertion
+    function saveInputs(){
+        var fname = $('#fname').val();
+        var lname = $('#lname').val();
+        var email = $('#email').val();
+        var phone = $('#phone').val();
+
+        var instance = new contact(fname, lname, email, phone);
+        store.push(instance);
+    }
+
+    // view contacts
+    function viewContacts(){
+        $('#view').html('');
+        for(i=0; i<store.length; i++){
+            var name = store[i].fname +' '+store[i].lname;
+            var email = store[i].email;
+            var phone = store[i].phone;
+            $('#view').html($('#view').html() + '\
+            <div class="col-m-8 col-4 contact">\
+                <p class="name" onclick="toggleMore($(this))">'+ name +'</p>\
+                <div class="more hidemore">\
+                    <p>'+ email +'</p>\
+                    <p>'+ phone +'</p>\
+                </div>\
+            </div>');
+        }
+    }
+
+    // edit contacts
+    function editContacts(){
+        $('#edit').html('');
+        for(i=0; i<store.length; i++){
+            var fname = store[i].fname;
+            var lname = store[i].lname;
+            var email = store[i].email;
+            var phone = store[i].phone;
+            var name = fname + ' ' + lname;
+            $('#edit').html($('#edit').html() + '\
+            <div class="col-m-8 col-4 contact">\
+                <p class="name">'+ name +'</p>\
+                <span onClick="toggleMore($(this))">Edit</span>\
+                <div class="more hidemore">\
+                    <input type="text" value="'+ fname +'">\
+                    <input type="text" value="'+ lname +'">\
+                    <input type="text" value="'+ email +'">\
+                    <input type="text" value="'+ phone +'">\
+                    <input type="hidden" value="'+ i +'">\
+                    <input onClick="editContact($(this))" type="submit" value="Edit Contact">\
+                </div>\
+            </div>');
+        }
+    }
+
+    // by default only add div should display
+    $('#add').siblings().hide();
+
+    // navigating functions
+    $('#addBtn').click(function(){
+        $('#add').show();
+        $('#add').siblings().hide();
+    });
+    $('#viewBtn').click(function(){
+        $('#view').show();
+        $('#view').siblings().hide();
+        viewContacts();
+    });
+    $('#editBtn').click(function(){
+        $('#edit').show();
+        $('#edit').siblings().hide();
+        editContacts();
+    });
+
+    // toggling more details
+    function toggleMore(el){
+        el.next().toggleClass('hidemore');
+        // targeting only edit page toggle
+        if(el.html()=="Edit"){
+            el.html('Abort');
+        }else if(el.html()=="Abort"){
+            el.html("Edit");
+        }
+    }
+
+    // edit and save
+    function editContact(el){
+        var fname = el.siblings().eq(0).val();
+        var lname = el.siblings().eq(1).val();
+        var email = el.siblings().eq(2).val();
+        var phone = el.siblings().eq(3).val();
+        var id = el.siblings().eq(4).val();
+        // push edit
+        store[id].fname = fname;
+        store[id].lname = lname;
+        store[id].email = email;
+        store[id].phone = phone;
+        // refresh page
+        editContacts();
+    }
     </script>
 </body>
 </html>

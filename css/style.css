@@ -127,10 +127,10 @@ input[type=submit]:hover {
     border-bottom: 2px solid #8e93bd;
     padding: 5px;
 }
-.contact .name{
+#view .name, #edit .name{
     cursor: pointer;
 }
-.contact .name:hover{
+#view .name:hover, #edit span:hover{
     color: #8e93bd;
 }
 .hidemore{
@@ -138,4 +138,13 @@ input[type=submit]:hover {
 }
 .more p{
     color: rgb(11, 252, 11);
+}
+
+/* edit contact */
+#edit .name{
+    display: inline-block;
+    margin-right: 100px;
+}
+#edit span{
+    cursor: pointer;
 }
