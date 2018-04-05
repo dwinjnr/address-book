@@ -39,7 +39,7 @@
                         <p class="error"></p>
     
                         <label for="email">Email</label>
-                        <input type="text" id="email" value="">
+                        <input type="text" autocomplete="off" id="email" value="">
                         <p class="error"></p>
     
                         <label for="phone">Phone Number</label>
@@ -81,7 +81,6 @@
     $('input').blur(function(){
         if($(this).val() == ""){
         $(this).next().html('Field cannot be empty');
-        $(this).focus();
         }
     });
     $('input').keydown(function(){
@@ -115,6 +114,7 @@
         $('#email').val('');
         $('#phone').val('');
         $('#success').html('');
+        $('#fname').focus();
 
     }
     
@@ -169,7 +169,7 @@
                 <div class="more hidemore">\
                     <input type="text" value="'+ fname +'">\
                     <input type="text" value="'+ lname +'">\
-                    <input type="text" value="'+ email +'">\
+                    <input type="text" autocomplete="off" value="'+ email +'">\
                     <input type="text" value="'+ phone +'">\
                     <input type="hidden" value="'+ i +'">\
                     <input onClick="editContact($(this))" type="submit" value="Edit Contact">\
