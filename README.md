@@ -12,4 +12,4 @@ Using **HTML**, **CSS** and **JAVASCRIPT**
 
 **Note**: No ~~Frameworks~~ nor ~~Database~~
 
-[Live Preview](https://www.dwinjnrab.netlify.com)
+[Live Preview](https://dwinjnrab.netlify.com/)
